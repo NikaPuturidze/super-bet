@@ -4,9 +4,8 @@ namespace SuperBet.Core.Interfaces
 {
     public interface IMainMenu
     {
-        void RenderMenu();
-        void BuildMenu();
+        void RenderMainMenu();
+        void BuildMainMenu();
         void HandleChoice(MainMenuOption choice);
-        void HandleSignUp();
     }
 }

@@ -14,5 +14,6 @@ namespace SuperBet.Core.Models
         public UserRole Role { get; set; } = UserRole.User;
         public decimal Balance { get; set; } = 0;
         public int FreeSpins { get; set; } = 0;
+        public bool IsRemembered { get; set; } = false;
     }
 }

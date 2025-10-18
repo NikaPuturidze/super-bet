@@ -5,7 +5,7 @@
         SignUp,
         SignIn,
         SignOut,
-        PlayGame,
+        GamesCatalog,
         Deposit,
         Withdraw,
         ViewBalance,

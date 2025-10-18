@@ -43,5 +43,30 @@ namespace SuperBet.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public User? UpdateBalance(Guid userId, decimal amount)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            if (user == null) return null;
+
+            user.Balance += amount;
+            _context.SaveData();
+            return user;
+        }
+
+        public User? GetRememberedUser()
+        {
+            return _context.Users.FirstOrDefault(u => u.IsRemembered);
+        }
+
+        public void ClearRememberedUsers()
+        {
+            foreach (var u in _context.Users)
+            {
+                u.IsRemembered = false;
+            }
+            _context.SaveData();
+        }
+
     }
 }

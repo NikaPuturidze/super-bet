@@ -6,7 +6,6 @@ namespace SuperBet.Core.Interfaces
     {
         User? CurrentUser { get; }
         bool IsLoggedIn { get; }
-
         void SignIn(User user);
         void SignOut();
     }

@@ -1,4 +1,4 @@
-﻿using SuperBet.ConsoleUI.Menu;
+﻿using SuperBet.ConsoleUI.Handlers;
 using SuperBet.Core.Session;
 using SuperBet.Data;
 using SuperBet.Data.Repositories;
@@ -10,11 +10,17 @@ namespace SuperBet.ConsoleUI
         static void Main(string[] args)
         {
             var context = new DataContext();
+            context.LoadData();
             var sessionManager = new SessionManager();
             var userRepository = new UserRepository(context);
-            var menu = new MainMenu(sessionManager, userRepository);
-            context.LoadData();
-            menu.RenderMenu();
+            var playResultsRepository = new PlayResultsRepository(context);
+
+            var rememberedUser = userRepository.GetRememberedUser();
+            if (rememberedUser != null)
+                sessionManager.SignIn(rememberedUser);
+
+            var menu = new HandleMainMenu(sessionManager, userRepository, playResultsRepository);
+            menu.Execute();
         }
     }
 }
