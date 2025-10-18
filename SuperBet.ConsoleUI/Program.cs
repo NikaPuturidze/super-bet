@@ -12,7 +12,7 @@ namespace SuperBet.ConsoleUI
             var context = new DataContext();
             context.LoadData();
             var sessionManager = new SessionManager();
-            var userRepository = new UserRepository(context);
+            var userRepository = new UserRepository(context, sessionManager);
             var playResultsRepository = new PlayResultsRepository(context);
 
             var rememberedUser = userRepository.GetRememberedUser();

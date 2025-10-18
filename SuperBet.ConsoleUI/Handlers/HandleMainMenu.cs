@@ -52,6 +52,9 @@ namespace SuperBet.ConsoleUI.Handlers
                 MainMenuOption.SignUp => new HandleSignUp(_userRepository),
                 MainMenuOption.SignIn => new HandleSignIn(_userRepository, _sessionManager),
                 MainMenuOption.SignOut => new HandleSignOut(_userRepository, _sessionManager),
+                MainMenuOption.Deposit => new HandleDeposit(_userRepository, _sessionManager),
+                MainMenuOption.Withdraw => new HandleWithdraw(_userRepository, _sessionManager),
+                MainMenuOption.ViewBalance => new HandleViewBalance(_sessionManager),
                 MainMenuOption.Exit => null,
                 _ => throw new NotImplementedException()
             };

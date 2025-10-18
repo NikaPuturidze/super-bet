@@ -2,10 +2,11 @@
 using SuperBet.Core.Guards;
 using SuperBet.Core.Interfaces;
 using SuperBet.Core.Models;
+using SuperBet.Core.Session;
 
 namespace SuperBet.Data.Repositories
 {
-    public class UserRepository(DataContext _context) : IUserRepository
+    public class UserRepository(DataContext _context, SessionManager _sessionManager) : IUserRepository
     {
         public void Add(User user)
         {
@@ -44,11 +45,10 @@ namespace SuperBet.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public User? UpdateBalance(Guid userId, decimal amount)
+        public User? UpdateBalance(decimal amount)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            var user = _sessionManager.CurrentUser;
             if (user == null) return null;
-
             user.Balance += amount;
             _context.SaveData();
             return user;

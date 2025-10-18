@@ -37,7 +37,7 @@ namespace SuperBet.ConsoleUI.Handlers.GamesCatalog.Slots
                 var choice = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
                         .Title("[bold yellow]Choose an option:[/]")
-                        .AddChoices("🎰 Spin", "💰 Change Bet", "🚪 Exit")
+                        .AddChoices("🎰 Spin", "💰 Change Bet", "🚪 Return")
                 );
 
                 switch (choice)
@@ -55,7 +55,7 @@ namespace SuperBet.ConsoleUI.Handlers.GamesCatalog.Slots
                         var outcome = slot.PlayGame(result, betAmount);
 
                         _playResultsRepository.Add(outcome);
-                        user = _userRepository.UpdateBalance(user.Id, outcome.NetGain)!;
+                        user = _userRepository.UpdateBalance(outcome.NetGain)!;
                         balance = user.Balance;
 
 

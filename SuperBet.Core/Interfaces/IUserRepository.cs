@@ -9,7 +9,7 @@ namespace SuperBet.Core.Interfaces
         User? ValidateCredentials(string email, string password);
         void Add(User user);
         void Update(User user);
-        User? UpdateBalance(Guid userId, decimal amount);
+        User? UpdateBalance(decimal amount);
         void Save();
         User? GetRememberedUser();
         void ClearRememberedUsers();
