@@ -11,12 +11,11 @@ namespace SuperBet.ConsoleUI.Handlers.GamesCatalog
         UserRepository _userRepository,
         PlayResultsRepository _playResultsRepository) : MenuHandler<GameOption>
     {
-        private readonly List<GameOption> GameOptions = [];
-        
         protected override Dictionary<GameOption, string> Labels => new()
         {
             { GameOption.Slots, "🎰 Slots" },
-            { GameOption.Return, "🚪 Return" },
+            { GameOption.Roulette, "🎰 Roulette" },
+            { GameOption.Return, "↩️ Return" },
         };
 
         protected override bool HandleChoice(GameOption option)
@@ -24,6 +23,7 @@ namespace SuperBet.ConsoleUI.Handlers.GamesCatalog
             IMenuHandler? handler = option switch
             {
                 GameOption.Slots => new Slots.HandleSlots(_sessionManager, _userRepository, _playResultsRepository),
+                GameOption.Roulette => new Roulette.HandleRouletteMenu(_sessionManager, _userRepository, _playResultsRepository),
                 GameOption.Return => null,
                 _ => throw new NotImplementedException()
             };

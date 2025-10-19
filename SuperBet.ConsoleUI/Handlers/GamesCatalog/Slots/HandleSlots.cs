@@ -25,7 +25,7 @@ namespace SuperBet.ConsoleUI.Handlers.GamesCatalog.Slots
             decimal balance = user.Balance;
             decimal betAmount = AskForBet(balance);
 
-            var slot = new SlotsLogic();
+            var slot = new SlotsLogic(_sessionManager);
             bool exit = false;
 
             while (!exit)
@@ -37,7 +37,7 @@ namespace SuperBet.ConsoleUI.Handlers.GamesCatalog.Slots
                 var choice = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
                         .Title("[bold yellow]Choose an option:[/]")
-                        .AddChoices("🎰 Spin", "💰 Change Bet", "🚪 Return")
+                        .AddChoices("🎰 Spin", "💰 Change Bet", "↩️ Return")
                 );
 
                 switch (choice)
@@ -81,7 +81,7 @@ namespace SuperBet.ConsoleUI.Handlers.GamesCatalog.Slots
                         betAmount = AskForBet(balance);
                         break;
 
-                    case "🚪 Return":
+                    case "↩️ Return":
                         exit = true;
                         break;
                 }

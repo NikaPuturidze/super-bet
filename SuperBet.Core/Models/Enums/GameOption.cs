@@ -4,5 +4,6 @@
     {
         Return = 0,
         Slots = 1,
+        Roulette = 2,
     }
 }

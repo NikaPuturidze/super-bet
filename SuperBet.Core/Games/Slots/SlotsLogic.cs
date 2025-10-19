@@ -1,9 +1,10 @@
 ﻿using SuperBet.Core.Models;
 using SuperBet.Core.Models.Enums;
+using SuperBet.Core.Session;
 
 namespace SuperBet.Core.Games.Slots
 {
-    public class SlotsLogic : BaseGame
+    public class SlotsLogic(SessionManager _sessionManager) : BaseGame
     {
         private static readonly Dictionary<SlotSymbol, string> symbolIcons = new()
         {
@@ -57,6 +58,7 @@ namespace SuperBet.Core.Games.Slots
         {
             var outcome = new PlayResult
             {
+                UserId = _sessionManager.CurrentUser!.Id,
                 GameName = "Slots",
                 BetAmount = betAmount,
                 Payout = 0,

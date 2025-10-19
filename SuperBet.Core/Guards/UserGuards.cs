@@ -35,8 +35,7 @@ namespace SuperBet.Core.Guards
             if (string.IsNullOrWhiteSpace(email))
                 throw new ArgumentException("Email address cannot be empty.");
 
-            const string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase))
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase))
                 throw new ArgumentException("Invalid email address format.");
 
             if (email.Length > 254)

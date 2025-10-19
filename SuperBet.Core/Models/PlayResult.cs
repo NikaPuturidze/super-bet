@@ -2,7 +2,7 @@
 {
     public class PlayResult
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public string GameName { get; set; } = string.Empty;
         public decimal BetAmount { get; set; }
         public decimal Payout { get; set; }

@@ -30,7 +30,7 @@ namespace SuperBet.ConsoleUI.Shared
             return options.First(x => x.Value == choiceLabel).Key;
         }
 
-        public void Execute()
+        public virtual void Execute()
         {
             bool exit = false;
             while (!exit)
